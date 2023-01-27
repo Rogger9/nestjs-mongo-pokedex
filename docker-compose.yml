@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  poke-db:
+    image: mongo:${TAG_IMAGE}
+    ports:
+      - ${DB_PORT}:27017
+    # volumes:
+    #   - ./data:/data/db
+    container_name: poke-db
