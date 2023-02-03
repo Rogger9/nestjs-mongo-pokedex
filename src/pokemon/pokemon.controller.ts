@@ -1,6 +1,5 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common'
-import { CreatePokemonDto } from './dto/create-pokemon.dto'
-import { UpdatePokemonDto } from './dto/update-pokemon.dto'
+import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from '@nestjs/common'
+import { CreatePokemonDto, UpdatePokemonDto } from './dto'
 import { PokemonService } from './pokemon.service'
 
 @Controller('pokemon')
@@ -12,7 +11,7 @@ export class PokemonController {
     return this.pokemonService.create(createPokemonDto)
   }
 
-  @Get()
+  @Get('all')
   findAll() {
     return this.pokemonService.findAll()
   }
@@ -20,6 +19,11 @@ export class PokemonController {
   @Get(':id')
   findById(@Param('id') id: string) {
     return this.pokemonService.findById(id)
+  }
+
+  @Get()
+  findOne(@Query() query: UpdatePokemonDto) {
+    return this.pokemonService.findOne(query)
   }
 
   @Patch(':id')
