@@ -28,11 +28,11 @@ export class PokemonController {
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updatePokemonDto: UpdatePokemonDto) {
-    return this.pokemonService.update(+id, updatePokemonDto)
+    return this.pokemonService.update(id, updatePokemonDto)
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.pokemonService.remove(+id)
+    return this.pokemonService.remove(id)
   }
 }
